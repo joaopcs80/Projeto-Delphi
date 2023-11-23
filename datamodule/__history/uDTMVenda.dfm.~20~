@@ -1,0 +1,145 @@
+object dtmVendas: TdtmVendas
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Height = 203
+  Width = 394
+  object QryCliente: TZQuery
+    Connection = dtmPrincipal.conexaoDB
+    SQL.Strings = (
+      'SELECT clienteId,'
+      '       nome'
+      ''
+      'FROM clientes')
+    Params = <>
+    Left = 64
+    Top = 32
+    object QryClienteclienteId: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'clienteId'
+      ReadOnly = True
+    end
+    object QryClientenome: TWideStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'nome'
+      Size = 60
+    end
+  end
+  object QryProdutos: TZQuery
+    Connection = dtmPrincipal.conexaoDB
+    SQL.Strings = (
+      'SELECT produtoId,'
+      '      nome,'
+      '      valor,'
+      '      quantidade'
+      '   FROM produtos')
+    Params = <>
+    Left = 136
+    Top = 32
+    object QryProdutosprodutoId: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'produtoId'
+      ReadOnly = True
+    end
+    object QryProdutosnome: TWideStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'nome'
+      Size = 60
+    end
+    object QryProdutosvalor: TFloatField
+      DisplayLabel = 'Valor'
+      FieldName = 'valor'
+      DisplayFormat = '#0,00'
+    end
+    object QryProdutosquantidade: TFloatField
+      DisplayLabel = 'Quantidade'
+      FieldName = 'quantidade'
+      DisplayFormat = '#0,00'
+    end
+  end
+  object cdsItensVendas: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 224
+    Top = 32
+    object cdsItensVendasprodutoId: TIntegerField
+      Alignment = taLeftJustify
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'produtoId'
+    end
+    object cdsItensVendasNomeProduto: TStringField
+      DisplayLabel = 'Nome do Produto'
+      FieldName = 'NomeProduto'
+      Size = 60
+    end
+    object cdsItensVendasquantidade: TFloatField
+      Alignment = taLeftJustify
+      DisplayLabel = 'Quantidade'
+      FieldName = 'quantidade'
+      DisplayFormat = '#0.00'
+    end
+    object cdsItensVendasvalorUnitario: TFloatField
+      Alignment = taLeftJustify
+      DisplayLabel = 'Valor Unitario'
+      FieldName = 'valorUnitario'
+      DisplayFormat = '#0.00'
+    end
+    object cdsItensVendasvalorTotalProduto: TFloatField
+      Alignment = taLeftJustify
+      DisplayLabel = 'Valor Total do Produto'
+      FieldName = 'valorTotalProduto'
+      DisplayFormat = '#0.00'
+    end
+  end
+  object dtsItensVendas: TDataSource
+    DataSet = cdsItensVendas
+    Left = 224
+    Top = 80
+  end
+  object dtsCliente: TDataSource
+    DataSet = QryCliente
+    Left = 64
+    Top = 80
+  end
+  object dtsProdutos: TDataSource
+    DataSet = QryProdutos
+    Left = 136
+    Top = 80
+  end
+  object cdsItens: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 296
+    Top = 32
+    object cdsItenscodigo: TStringField
+      FieldName = 'produtoId'
+      Size = 100
+    end
+    object cdsItensitem: TIntegerField
+      FieldName = 'NomeProduto'
+    end
+    object cdsItensdescricao: TStringField
+      FieldName = 'descricao'
+      Size = 100
+    end
+    object cdsItensvalorunitario: TCurrencyField
+      FieldName = 'valorunitario'
+      EditFormat = 'R$ #.##0,00'
+    end
+    object cdsItensquantidade: TCurrencyField
+      FieldName = 'quantidade'
+      DisplayFormat = '0.000'
+    end
+    object cdsItenssubtotal: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'valorTotalProduto'
+      EditFormat = 'R$ #.##0,00'
+      Calculated = True
+    end
+    object cdsItenstotalcompra: TAggregateField
+      FieldName = 'totalcompra'
+      DisplayName = ''
+      Expression = 'sum(valorunitario*quantidade)'
+    end
+  end
+end

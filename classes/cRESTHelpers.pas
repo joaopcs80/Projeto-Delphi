@@ -1,0 +1,120 @@
+unit cRESTHelpers;
+
+interface
+
+uses
+  System.JSON, Vcl.Dialogs, Vcl.StdCtrls, FireDAC.Comp.Client, System.Classes,
+  REST.Client, IPPeerClient, System.SysUtils;
+
+ function BuscarCEP(UmCEP: string): TStringList;
+ function BuscarCEPNoViaCEP(UmCEP: string): TStringList;
+
+implementation
+
+{$REGION 'Buscar no Pricez'}
+
+{Esse método busca o Endereço e o DDD pelo CEP através da API
+ ddd.pricez.com.br, o Endereço é buscado no Postmon.
+ Outra opção é pegar o endereço pela API republicavirtual, porém
+ não retorna o ddd.
+@param UmCEP Algum CEP, apenas números são permitidos}
+function BuscarCEP(UmCEP: string): TStringList;
+var
+  obj, data: TJSONObject;
+  RESTClient1: TRESTClient;
+  RESTRequest1: TRESTRequest;
+  RESTResponse1: TRESTResponse;
+  Endereco: TStringList;
+begin
+  RESTClient1 := TRESTClient.Create(nil);
+  RESTRequest1 := TRESTRequest.Create(nil);
+  RESTResponse1 := TRESTResponse.Create(nil);
+  RESTRequest1.Client := RESTClient1;
+  RESTRequest1.Response := RESTResponse1;
+  RESTClient1.BaseURL := 'http://ddd.pricez.com.br/cep/' + UmCEP + '.json';
+  RESTRequest1.Execute;
+  obj := RESTResponse1.JSONValue as TJSONObject;
+  try
+    Endereco := TStringList.Create;
+    if Assigned(obj) then
+    begin
+      data := obj.Values['payload'] as TJSONObject;
+      if data.Count <> 0 then
+      begin
+        Endereco.Add(data.Values['logradouro'].Value);
+        Endereco.Add(data.Values['bairro'].Value);
+        Endereco.Add(data.Values['estado'].Value);
+        Endereco.Add(data.Values['cidade'].Value);
+        Endereco.Add(data.Values['ddd'].Value);
+      end;
+    end;
+  finally
+    FreeAndNil(obj);
+  end;
+  Result := Endereco;
+end;
+
+{$ENDREGION}
+
+{$REGION 'Buscar no ViaCEP'}
+
+function BuscarCEPNoViaCEP(UmCEP: string): TStringList;
+var
+  data: TJSONObject;
+  RESTClient1: TRESTClient;
+  RESTRequest1: TRESTRequest;
+  RESTResponse1: TRESTResponse;
+  Endereco: TStringList;
+begin
+  RESTClient1 := TRESTClient.Create(nil);
+  RESTRequest1 := TRESTRequest.Create(nil);
+  RESTResponse1 := TRESTResponse.Create(nil);
+  RESTRequest1.Client := RESTClient1;
+  RESTRequest1.Response := RESTResponse1;
+  RESTClient1.BaseURL := 'https://viacep.com.br/ws/' + UmCEP + '/json';
+  RESTRequest1.Execute;
+  data := RESTResponse1.JSONValue as TJSONObject;
+  try
+    Endereco := TStringList.Create;
+    if Assigned(data) then
+    begin
+        try
+          Endereco.Add(data.Values['logradouro'].Value);
+        except
+          on Exception do
+            Endereco.Add('');
+        end;
+        try
+          Endereco.Add(data.Values['bairro'].Value);
+        except
+         on Exception do
+           Endereco.Add('');
+        end;
+        try
+          Endereco.Add(data.Values['uf'].Value);
+        except
+         on Exception do
+           Endereco.Add('');
+        end;
+        try
+          Endereco.Add(data.Values['localidade'].Value);
+        except
+         on Exception do
+           Endereco.Add('');
+        end;
+        try
+          Endereco.Add(data.Values['complemento'].Value);
+        except
+         on Exception do
+           Endereco.Add('');
+        end;
+      end;
+  finally
+    FreeAndNil(data);
+  end;
+  Result := Endereco;
+end;
+
+{$ENDREGION}
+
+end.

@@ -1,0 +1,48 @@
+object frmAtualizaDB: TfrmAtualizaDB
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'frmAtualizaDB'
+  ClientHeight = 317
+  ClientWidth = 381
+  Color = clGrayText
+  TransparentColor = True
+  TransparentColorValue = clGrayText
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnl1: TPanel
+    Left = 40
+    Top = 136
+    Width = 305
+    Height = 41
+    TabOrder = 0
+    object RxLabel1: TRxLabel
+      Left = 1
+      Top = 1
+      Width = 303
+      Height = 39
+      Align = alClient
+      Alignment = taCenter
+      Caption = 'Carregando Sistema'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -27
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      ParentShowHint = False
+      ShadowColor = clBackground
+      ShadowPos = spLeftBottom
+      ShowHint = False
+      ExplicitWidth = 241
+      ExplicitHeight = 34
+    end
+  end
+end

@@ -1,0 +1,40 @@
+unit uDTMConexao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, ZAbstractConnection, ZConnection, Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
+  Datasnap.DBClient;
+
+type
+  TdtmPrincipal = class(TDataModule)
+    conexaoDB: TZConnection;
+    cdsItens: TClientDataSet;
+    cdsItenscodigo: TStringField;
+    cdsItensitem: TIntegerField;
+    cdsItensdescricao: TStringField;
+    cdsItensvalorunitario: TCurrencyField;
+    cdsItensquantidade: TCurrencyField;
+    cdsItenssubtotal: TCurrencyField;
+    cdsItenstotalcompra: TAggregateField;
+    QryPDV: TZQuery;
+    QryPDVprodutoId: TIntegerField;
+    QryPDVnome: TWideStringField;
+    QryPDVvalor: TFloatField;
+    QryPDVquantidade: TFloatField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dtmPrincipal: TdtmPrincipal;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,81 @@
+unit uDTMVenda;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset, Datasnap.DBClient;
+
+type
+  TdtmVendas = class(TDataModule)
+    QryCliente: TZQuery;
+    QryClienteclienteId: TIntegerField;
+    QryClientenome: TWideStringField;
+    QryProdutos: TZQuery;
+    QryProdutosprodutoId: TIntegerField;
+    QryProdutosnome: TWideStringField;
+    QryProdutosvalor: TFloatField;
+    QryProdutosquantidade: TFloatField;
+    cdsItensVendas: TClientDataSet;
+    dtsItensVendas: TDataSource;
+    dtsCliente: TDataSource;
+    dtsProdutos: TDataSource;
+    cdsItensVendasprodutoId: TIntegerField;
+    cdsItensVendasNomeProduto: TStringField;
+    cdsItensVendasquantidade: TFloatField;
+    cdsItensVendasvalorUnitario: TFloatField;
+    cdsItensVendasvalorTotalProduto: TFloatField;
+    cdsItens: TClientDataSet;
+    cdsItenscodigo: TStringField;
+    cdsItensitem: TIntegerField;
+    cdsItensdescricao: TStringField;
+    cdsItensvalorunitario: TCurrencyField;
+    cdsItensquantidade: TCurrencyField;
+    cdsItenssubtotal: TCurrencyField;
+    cdsItenstotalcompra: TAggregateField;
+    QryStatusCliente: TZQuery;
+    dtsStatusCliente: TDataSource;
+    QryStatusClientestatusclienteId: TIntegerField;
+    QryStatusClientedescricao: TWideStringField;
+    dtsPessoa: TDataSource;
+    QryPessoa: TZQuery;
+    QryPessoapessoaId: TIntegerField;
+    QryPessoadescricao: TWideStringField;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dtmVendas: TdtmVendas;
+
+implementation
+
+uses
+  uDTMConexao;
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TdtmVendas.DataModuleCreate(Sender: TObject);
+begin
+  cdsItensVendas.CreateDataSet;
+  QryCliente.Open;
+  QryProdutos.Open;
+  QryPessoa.Open;
+  QryStatusCliente.Open;
+end;
+
+procedure TdtmVendas.DataModuleDestroy(Sender: TObject);
+begin
+  cdsItensVendas.Close;
+  QryCliente.Close;
+  QryProdutos.Close;
+  QryPessoa.Close;
+  QryStatusCliente.Close;
+end;
+
+end.

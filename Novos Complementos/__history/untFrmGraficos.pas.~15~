@@ -1,0 +1,85 @@
+unit untFrmGraficos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, VclTee.TeeGDIPlus, Data.DB, VCLTee.Series, VCLTee.TeEngine, VCLTee.TeeProcs,
+  VCLTee.Chart, VCLTee.DBChart, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Buttons, PngSpeedButton, Vcl.StdCtrls, JvExExtCtrls, JvImage,
+  Vcl.Imaging.jpeg, Math;
+
+type
+  TfrmGraficos = class(TForm)
+    pnlFundo: TPanel;
+    pnlTop: TPanel;
+    pnlCentro: TPanel;
+    pgcGraficos: TPageControl;
+    tabGrafico1: TTabSheet;
+    tabGrafico2: TTabSheet;
+    tabGrafico3: TTabSheet;
+    tabGrafico4: TTabSheet;
+    DBChart1: TDBChart;
+    Series1: TBarSeries;
+    DBChart2: TDBChart;
+    Series2: TPieSeries;
+    DBChart3: TDBChart;
+    Series3: TLineSeries;
+    DBChart4: TDBChart;
+    PieSeries2: TPieSeries;
+    lblTiTulo: TLabel;
+    imgFundo: TJvImage;
+    pnlbutton: TPanel;
+    btnSair: TPngSpeedButton;
+    btnAvancar: TPngSpeedButton;
+    btnVoltar: TPngSpeedButton;
+    btnSelecionar: TPngSpeedButton;
+    procedure btnSairClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnVoltarClick(Sender: TObject);
+    procedure btnAvancarClick(Sender: TObject);
+  private
+    F_Grafico: Integer;
+    procedure EsconderPaginas;
+    { Private declarations }
+  public
+   property pGrafico : Integer read F_Grafico write F_Grafico;
+  end;
+
+var
+  frmGraficos: TfrmGraficos;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmGraficos.btnSairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmGraficos.FormShow(Sender: TObject);
+begin
+  EsconderPaginas;
+  pgcGraficos.ActivePageIndex := pGrafico;
+  lblTiTulo.Caption := 'Graficos';
+end;
+
+procedure TfrmGraficos.btnVoltarClick(Sender: TObject);
+begin
+  pgcGraficos.ActivePageIndex := IfThen(pGrafico <> 0, pGrafico -1, pGrafico);
+end;
+
+procedure TfrmGraficos.btnAvancarClick(Sender: TObject);
+begin
+  pgcGraficos.ActivePageIndex := IfThen(pGrafico <> 4, pGrafico +1, 0);
+end;
+
+procedure TfrmGraficos.EsconderPaginas;
+begin
+  tabGrafico1.TabVisible := False;
+  tabGrafico2.TabVisible := False;
+  tabGrafico3.TabVisible := False;
+  tabGrafico4.TabVisible := False;
+end;
+
+end.

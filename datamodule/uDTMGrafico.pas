@@ -1,0 +1,41 @@
+unit uDTMGrafico;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset;
+
+type
+  TdtmGrafico = class(TDataModule)
+    QryProdutoEstoque: TZQuery;
+    QryProdutoEstoqueLabel: TWideStringField;
+    QryProdutoEstoqueValue: TFloatField;
+    dtsProdutoEstoque: TDataSource;
+    QryValorVendaPorCliente: TZQuery;
+    QryValorVendaPorClienteLabel: TWideStringField;
+    QryValorVendaPorClienteValue: TFloatField;
+    Qry10ProdutosMaisVendidos: TZQuery;
+    QryVendasDaSemana: TZQuery;
+    QryVendasDaSemanaLabel: TDateTimeField;
+    QryVendasDaSemanaValue: TFloatField;
+    Qry10ProdutosMaisVendidosLabel: TWideStringField;
+    Qry10ProdutosMaisVendidosValue: TFloatField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dtmGrafico: TdtmGrafico;
+
+implementation
+
+uses
+  uDTMConexao, uDTMVenda;
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

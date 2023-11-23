@@ -1,0 +1,97 @@
+unit uPDVImportarClientes;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Buttons,
+  Vcl.Imaging.pngimage,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.StdCtrls,
+  Vcl.WinXCtrls;
+
+type
+  TfrmPDVImportarCliente = class(TForm)
+    pnlContainer: TPanel;
+    pnlTop: TPanel;
+    pnlInfo: TPanel;
+    Panel1: TPanel;
+    Image1: TImage;
+    btnSair: TSpeedButton;
+    pnlTitulo: TPanel;
+    ImageCliente: TImage;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    DBGrid1: TDBGrid;
+    Button1: TButton;
+    Panel5: TPanel;
+    Shape1: TShape;
+    edtPesquisar: TSearchBox;
+    procedure btnSairClick(Sender: TObject);
+  private
+    FProc: TProc<TObject>;
+  public
+    class function New(AOWner: TComponent): TPageImportarCliente;
+    function Titulo(Value: String): TPageImportarCliente;
+    function Image(Value: String): TPageImportarCliente;
+    function Click(Value: TProc<TObject>): TPageImportarCliente;
+    function Embed(Value: TWinControl): TPageImportarCliente;
+  end;
+
+  var
+    frmPDVImportarCliente: TfrmPDVImportarCliente;
+
+implementation
+
+{$R *.dfm}
+
+{ TPageImportarCliente }
+
+procedure TfrmPDVImportarCliente.btnSairClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
+function TfrmPDVImportarCliente.Click(
+  Value: TProc<TObject>): TPageImportarCliente;
+begin
+  Result := Self;
+  FProc := Value;
+end;
+
+function TfrmPDVImportarCliente.Embed(Value: TWinControl): TPageImportarCliente;
+begin
+  Result := Self;
+  Self.Parent := Value;
+end;
+
+function TfrmPDVImportarCliente.Image(Value: String): TPageImportarCliente;
+begin
+  Result := Self;
+  ImageCliente.Picture.LoadFromFile(Value);
+end;
+
+class function TfrmPDVImportarCliente.New(
+  AOWner: TComponent): TPageImportarCliente;
+begin
+  Result := Self.Create(AOWner);
+end;
+
+function TfrmPDVImportarCliente.Titulo(Value: String): TPageImportarCliente;
+begin
+  Result := Self;
+  pnlTitulo.Caption := Value;
+end;
+
+end.

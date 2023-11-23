@@ -1,0 +1,167 @@
+unit cFormatarTexto;
+
+interface
+
+uses
+   winapi.windows, System.SysUtils, System.MaskUtils, Vcl.StdCtrls;
+
+Function formacpf(numtexto:String):String;
+Function formacnpj(numtexto:String):String;
+Function formatelefone(numtexto:String):String;
+Function formacelular(numtexto:String):String;
+Function forma0800(numtexto:String):String;
+Function formaCEP(numtexto:String):String;
+Function limparcpf(numtexto:String):String;
+Function limparcnpj(numtexto:String):String;
+Function limpatelefone(numtexto:String):String;
+Function limpacelular(numtexto:String):String;
+Function limpa0800(numtexto:String):String;
+Function limpaCEP(numtexto:String):String;
+function SomenteNumero(fField : String): String;
+function FormatarCpfCnpj:string;
+
+implementation
+
+{$REGION 'Formatar Edts'}
+//Formata número CPF
+Function formacpf(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('.',numtexto),1);  //Remove ponto .
+    Delete(numtexto,ansipos('.',numtexto),1);
+    Delete(numtexto,ansipos('-',numtexto),1); //Remove traço -
+    Delete(numtexto,ansipos('/',numtexto),1); //Remove barra /
+    Result:=FormatmaskText('000\.000\.000\-00;0;',numtexto); // Formata os numero
+
+end;
+//Formata número CNPJ
+Function formacnpj(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('.',numtexto),1);  //Remove ponto .
+    Delete(numtexto,ansipos('.',numtexto),1);
+    Delete(numtexto,ansipos('-',numtexto),1); //Remove traço -
+    Delete(numtexto,ansipos('/',numtexto),1); //Remove barra /
+    Result:=FormatmaskText('00\.000\.000\/0000\-00;0;',numtexto);
+
+end;
+//Formata número telefone fixo
+Function formatelefone(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('-',numtexto),1);  //Remove traço -
+    Delete(numtexto,ansipos('-',numtexto),1);
+    Delete(numtexto,ansipos('(',numtexto),1); //Remove parenteses  (
+    Delete(numtexto,ansipos(')',numtexto),1); //Remove parenteses  )
+    Result:=FormatmaskText('\(00\)0000\-0000;0;',numtexto); // Formata os numero
+end;
+//Formata número celular
+Function formacelular(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('-',numtexto),1);  //Remove traço -
+    Delete(numtexto,ansipos('-',numtexto),1);
+    Delete(numtexto,ansipos('(',numtexto),1); //Remove parenteses  (
+    Delete(numtexto,ansipos(')',numtexto),1); //Remove parenteses  )
+    Result:=FormatmaskText('\(00\)00000\-0000;0;',numtexto); // Formata os numero
+end;
+
+Function forma0800(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('-',numtexto),1);  //Remove traço -
+    Delete(numtexto,ansipos('-',numtexto),1);
+    Delete(numtexto,ansipos('(',numtexto),1); //Remove parenteses  (
+    Delete(numtexto,ansipos(')',numtexto),1); //Remove parenteses  )
+    Delete(numtexto,ansipos(' ',numtexto),1); //Remove parenteses  )
+    Result:=FormatmaskText('0000\ 000\ 0000;0;',numtexto); // Formata os numero
+end;
+
+Function formaCEP(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('.',numtexto),1);  //Remove traço -
+    Delete(numtexto,ansipos('-',numtexto),1);
+    Delete(numtexto,ansipos('(',numtexto),1); //Remove parenteses  (
+    Delete(numtexto,ansipos(')',numtexto),1); //Remove parenteses  )
+    Delete(numtexto,ansipos(' ',numtexto),1); //Remove parenteses  )
+    Result:=FormatmaskText('00\.000\-000;0;',numtexto); // Formata os numero
+end;
+
+{$ENDREGION}
+
+{$REGION 'Limpar edts'}
+Function limparcpf(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('.',numtexto),1);  //Remove ponto .
+    Delete(numtexto,ansipos('.',numtexto),1);
+    Delete(numtexto,ansipos('-',numtexto),1); //Remove traço -
+    Delete(numtexto,ansipos('/',numtexto),1); //Remove barra /
+    Result:=FormatmaskText('00000000000;0;',numtexto);
+end;
+
+Function limparcnpj(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('.',numtexto),1);  //Remove ponto .
+    Delete(numtexto,ansipos('.',numtexto),1);
+    Delete(numtexto,ansipos('-',numtexto),1); //Remove traço -
+    Delete(numtexto,ansipos('/',numtexto),1); //Remove barra /
+    Result:=FormatmaskText('00000000000000;0;',numtexto);
+end;
+
+Function limpatelefone(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('-',numtexto),1);  //Remove traço -
+    Delete(numtexto,ansipos('-',numtexto),1);
+    Delete(numtexto,ansipos('(',numtexto),1); //Remove parenteses  (
+    Delete(numtexto,ansipos(')',numtexto),1); //Remove parenteses  )
+    Result:=FormatmaskText('0000000000;0;',numtexto); // Formata os numero
+end;
+
+Function limpacelular(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('-',numtexto),1);  //Remove traço -
+    Delete(numtexto,ansipos('-',numtexto),1);
+    Delete(numtexto,ansipos('(',numtexto),1); //Remove parenteses  (
+    Delete(numtexto,ansipos(')',numtexto),1); //Remove parenteses  )
+    Result:=FormatmaskText('00000000000;0;',numtexto); // Formata os numero
+end;
+
+Function limpa0800(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('-',numtexto),1);  //Remove traço -
+    Delete(numtexto,ansipos('-',numtexto),1);
+    Delete(numtexto,ansipos('(',numtexto),1); //Remove parenteses  (
+    Delete(numtexto,ansipos(')',numtexto),1); //Remove parenteses  )
+    Delete(numtexto,ansipos(' ',numtexto),1); //Remove parenteses  )
+    Delete(numtexto,ansipos(' ',numtexto),1); //Remove parenteses  )
+    Result:=FormatmaskText('00000000000;0;',numtexto); // Formata os numero
+end;
+
+Function limpaCEP(numtexto:String):String;
+begin
+    Delete(numtexto,ansipos('.',numtexto),1);  //Remove traço -
+    Delete(numtexto,ansipos('-',numtexto),1);
+    Result:=FormatmaskText('00000000;0;',numtexto); // Formata os numero
+end;
+
+{$ENDREGION}
+
+{$REGION 'Atividades'}
+function SomenteNumero(fField : String): String;
+var
+  I : Byte;
+begin
+   Result := '';
+   for I := 1 To Length(fField) do
+       if fField [I] In ['0'..'9'] Then
+            Result := Result + fField [I];
+end;
+
+
+function FormatarCpfCnpj:string;
+var
+i:string;
+begin
+  if (Length(SomenteNumero(i))<= 3 then
+    Result := Copy(SomenteNumero(i),1,3)
+end;
+
+{$ENDREGION}
+
+end.
+

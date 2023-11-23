@@ -1,0 +1,86 @@
+unit untFrmTransparentGrid;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls,
+        Forms, Dialogs, Db, Grids, DBGrids, ADODB, ExtCtrls;
+
+type
+  TfrmTransparentGrid = class(TForm)
+    ADOTable1: TADOTable;  // ignorar se você não estiver usando componente ADO para acessar a tabela
+    DataSource1: TDataSource;
+    Image1: TImage;
+    Panel1: TPanel;
+    DBGrid1: TDBGrid;
+    procedure DBGrid1DrawDataCell(Sender: TObject; const Rect: TRect;
+      Field: TField; State: TGridDrawState);
+    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmTransparentGrid: TfrmTransparentGrid;
+
+implementation
+
+{$R *.DFM}
+
+procedure TfrmTransparentGrid.DBGrid1DrawDataCell(Sender: TObject;   const Rect: TRect;
+  Field: TField; State: TGridDrawState);
+var
+  Text: string;
+  Rct: TRect;
+begin
+  Text := Field.AsString;
+  Rct:= Rect;
+  DBGrid1.Canvas.Brush.Color := clWhite;
+  DBGrid1.Canvas.FillRect (Rct);
+  BitBlt(DBGrid1.Canvas.handle,
+         Rct.left,
+         Rct.top,
+         Rct.right - Rct.left,
+         Rct.bottom - Rct.top,
+         Image1.Canvas.Handle,
+         Rct.left + DBGrid1.Left + Panel1.Left,
+         Rct.Top + DBGrid1.Top + Panel1.Top,
+         SRCCOPY);
+
+  SetBkModE(DBGrid1.Canvas.Handle, TRANSPARENT);
+  inc(Rct.Top ,2);
+  inc(Rct.Left ,2);
+  DBGrid1.Canvas.Font.Color := clBlack;
+  DrawtextEx(DBGrid1.Canvas.Handle,
+             PChar(Text),
+             Length(Text),
+             Rct,
+             DT_WORDBREAK,
+             nil);
+
+end;
+
+procedure TfrmTransparentGrid.Panel1MouseDown(Sender: TObject;   Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  ReleaseCapture;
+  Panel1.Perform(WM_SYSCOMMAND, $F012, SC_MOVE);
+  Application.ProcessMessages;
+
+  BitBlt(GetDc(Panel1.Handle),
+         0,
+         0,
+         Panel1.Width,
+         Panel1.Height,
+         Image1.Canvas.Handle  ,
+         Panel1.Left, Panel1.Top,
+         SRCAND);
+
+  DBGrid1.refresh;
+end;
+
+
+end.

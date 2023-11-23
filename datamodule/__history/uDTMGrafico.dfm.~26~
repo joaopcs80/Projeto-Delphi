@@ -1,0 +1,104 @@
+object dtmGrafico: TdtmGrafico
+  OldCreateOrder = False
+  Height = 278
+  Width = 447
+  object QryProdutoEstoque: TZQuery
+    Connection = dtmPrincipal.conexaoDB
+    SQL.Strings = (
+      
+        'SELECT CONVERT(VARCHAR, produtoId) +'#39' - '#39'+nome As Label, Quantid' +
+        'ade As Value FROM produtos')
+    Params = <>
+    Left = 41
+    Top = 26
+    object QryProdutoEstoqueLabel: TWideStringField
+      FieldName = 'Label'
+      ReadOnly = True
+      Size = 93
+    end
+    object QryProdutoEstoqueValue: TFloatField
+      FieldName = 'Value'
+    end
+  end
+  object dtsProdutoEstoque: TDataSource
+    DataSet = QryProdutoEstoque
+    Left = 41
+    Top = 74
+  end
+  object QryValorVendaPorCliente: TZQuery
+    Connection = dtmPrincipal.conexaoDB
+    SQL.Strings = (
+      
+        'SELECT CONVERT(VARCHAR, vendas.clienteId) +'#39' - '#39'+clientes.nome a' +
+        's Label,'
+      '       SUM(vendas.totalVenda) As Value'
+      '  FROM vendas'
+      
+        '       INNER JOIN clientes ON clientes.clienteId = vendas.client' +
+        'eId'
+      
+        ' WHERE vendas.datavenda BETWEEN CONVERT(DATE, GETDATE()-7) and C' +
+        'ONVERT(DATE, GETDATE())'
+      ' GROUP BY vendas.clienteId, clientes.Nome')
+    Params = <>
+    Left = 208
+    Top = 48
+    object QryValorVendaPorClienteLabel: TWideStringField
+      FieldName = 'Label'
+      ReadOnly = True
+      Size = 93
+    end
+    object QryValorVendaPorClienteValue: TFloatField
+      FieldName = 'Value'
+      ReadOnly = True
+    end
+  end
+  object Qry10ProdutosMaisVendidos: TZQuery
+    Connection = dtmPrincipal.conexaoDB
+    SQL.Strings = (
+      
+        ' SELECT TOP 10 CONVERT(VARCHAR, vi.produtoId) +'#39'-'#39'+p.nome As Lab' +
+        'el,'
+      '        SUM(vi.totalProduto) As Value'
+      '   FROM vendasItens as vi'
+      '        INNER JOIN produtos AS p ON p.produtoId = vi.produtoId'
+      '  GROUP BY vi.produtoId, p.nome'
+      '  ORDER BY Label DESC')
+    Params = <>
+    Left = 208
+    Top = 112
+    object Qry10ProdutosMaisVendidosLabel: TWideStringField
+      FieldName = 'Label'
+      ReadOnly = True
+      Size = 91
+    end
+    object Qry10ProdutosMaisVendidosValue: TFloatField
+      FieldName = 'Value'
+      ReadOnly = True
+    end
+  end
+  object QryVendasDaSemana: TZQuery
+    Connection = dtmPrincipal.conexaoDB
+    Active = True
+    SQL.Strings = (
+      
+        '  SELECT vendas.dataVenda As Label, SUM(vendas.totalVenda) AS Va' +
+        'lue'
+      '    FROM vendas'
+      
+        '   WHERE vendas.dataVenda BETWEEN CONVERT(DATE,GETDATE()-7) and ' +
+        'CONVERT(DATE, GETDATE())'
+      '   GROUP BY vendas.dataVenda')
+    Params = <>
+    Left = 224
+    Top = 200
+    object QryVendasDaSemanaLabel: TDateTimeField
+      FieldName = 'Label'
+      Required = True
+    end
+    object QryVendasDaSemanaValue: TFloatField
+      FieldName = 'Value'
+      ReadOnly = True
+    end
+  end
+end

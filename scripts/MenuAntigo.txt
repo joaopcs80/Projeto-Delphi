@@ -1,0 +1,116 @@
+{$REGION 'Botões de Menus'}
+
+//Fechar Aplicação
+procedure TfrmPrincipal.mnuFecharClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+//Cadastros
+procedure TfrmPrincipal.CATEGORIA1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmCadCategoria, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.CLIENTE1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmCadCliente, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.PRODUTO1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmCadProduto, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.USURIO1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmCadUsuario, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.USURIOSVSAES1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmUsuarioVsAcoes, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.AOACESSO1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmCadAcaoAcesso, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+procedure TfrmPrincipal.ALTERARSENHA1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmAlterarSenha, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+//Movimentação
+procedure TfrmPrincipal.VENDA1Click(Sender: TObject);
+begin
+  TFuncao.CriarForm(TfrmProVenda, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+{$ENDREGION}
+
+{$REGION 'Botões de Relatórios'}
+
+//Relatórios Simples
+procedure TfrmPrincipal.CATEGORIA2Click(Sender: TObject);
+begin
+  TFuncao.CriarRelatorio(TfrmRelCategoria, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+
+procedure TfrmPrincipal.CLIENTE2Click(Sender: TObject);
+begin
+  TFuncao.CriarRelatorio(TfrmRelCadCliente, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+
+procedure TfrmPrincipal.FICHADECLIENTE1Click(Sender: TObject);
+begin
+  TFuncao.CriarRelatorio(TfrmRelCadClienteFicha, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+
+procedure TfrmPrincipal.PRODUTO2Click(Sender: TObject);
+begin
+  TFuncao.CriarRelatorio(TfrmRelCadProduto, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+
+
+procedure TfrmPrincipal.PRODUTOSPORCATEGORIA1Click(Sender: TObject);
+begin
+  TFuncao.CriarRelatorio(TfrmRelCadProdutoComGrupoCategoria, oUsuarioLogado, DtmPrincipal.ConexaoDB);
+end;
+
+
+//Relatório Elaborados
+procedure TfrmPrincipal.VENDAPORDATA1Click(Sender: TObject);
+begin
+  try
+    frmSelecionarData:=TfrmSelecionarData.Create(self);
+    if TUsuarioLogado.TenhoAcesso(oUsuarioLogado.codigo, frmSelecionarData.Name,dtmPrincipal.ConexaoDB) then
+    begin
+    frmSelecionarData.ShowModal;
+
+    frmRelProVendaPorData:=TfrmRelProVendaPorData.Create(self);
+    frmRelProVendaPorData.QryVendas.Close;
+    frmRelProVendaPorData.QryVendas.ParamByName('DataInicio').AsDate:=frmSelecionarData.edtDataInicio.Date;
+    frmRelProVendaPorData.QryVendas.ParamByName('DataFim').AsDate:=frmSelecionarData.edtDataFinal.Date;
+    frmRelProVendaPorData.QryVendas.Open;
+    frmRelProVendaPorData.Relatorio.PreviewModal;
+    end
+    else begin
+      MessageDlg('Usuário: '+oUsuarioLogado.nome +', não tem permissão de acesso',mtWarning,[mbOK],0);
+    end;
+
+  finally
+    if  Assigned (frmSelecionarData) then
+        frmSelecionarData.Release;
+    if  Assigned (frmRelProVendaPorData)then
+        frmRelProVendaPorData.Release;
+  end;
+end;
+
+
+{$ENDREGION}

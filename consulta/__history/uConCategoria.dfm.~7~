@@ -1,0 +1,83 @@
+inherited frmConCategoria: TfrmConCategoria
+  Caption = 'Consulta de Categoria'
+  ClientHeight = 327
+  ClientWidth = 589
+  ExplicitWidth = 595
+  ExplicitHeight = 356
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Width = 589
+    ExplicitWidth = 589
+    inherited mskPesquisa: TMaskEdit
+      Width = 587
+      ExplicitWidth = 587
+    end
+  end
+  inherited Panel2: TPanel
+    Width = 589
+    Height = 235
+    ExplicitWidth = 589
+    ExplicitHeight = 235
+    inherited grdPesquisa: TDBGrid
+      Width = 587
+      Height = 233
+      DataSource = dtsListagem
+      DrawingStyle = gdsClassic
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'categoriaId'
+          Title.Alignment = taCenter
+          Title.Color = clGray
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWhite
+          Title.Font.Height = -11
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = []
+          Width = 56
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Alignment = taCenter
+          Title.Color = clGray
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWhite
+          Title.Font.Height = -11
+          Title.Font.Name = 'Tahoma'
+          Title.Font.Style = []
+          Width = 510
+          Visible = True
+        end>
+    end
+  end
+  inherited Panel3: TPanel
+    Top = 286
+    Width = 589
+    ExplicitTop = 286
+    ExplicitWidth = 589
+    inherited btnFechar: TBitBtn
+      Left = 510
+      ExplicitLeft = 510
+    end
+  end
+  inherited QryListagem: TZQuery
+    SQL.Strings = (
+      ' SELECT categoriaId,'
+      '        descricao'
+      '   FROM categorias')
+    object QryListagemcategoriaId: TIntegerField
+      Alignment = taLeftJustify
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'categoriaId'
+      ReadOnly = True
+    end
+    object QryListagemdescricao: TWideStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'descricao'
+      Size = 30
+    end
+  end
+end

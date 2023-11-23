@@ -1,0 +1,252 @@
+object frmAlterarSenha: TfrmAlterarSenha
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'Alterar Senha'
+  ClientHeight = 380
+  ClientWidth = 365
+  Color = clFuchsia
+  TransparentColor = True
+  TransparentColorValue = clFuchsia
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlFundo: TPanel
+    Left = 0
+    Top = 0
+    Width = 365
+    Height = 380
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clFuchsia
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 461
+    ExplicitHeight = 371
+    DesignSize = (
+      365
+      380)
+    object shpAlterarSenha: TShape
+      Left = 0
+      Top = 0
+      Width = 365
+      Height = 380
+      Align = alClient
+      Pen.Style = psInsideFrame
+      Shape = stRoundRect
+      ExplicitTop = 1
+    end
+    object Label1: TLabel
+      Left = 72
+      Top = 158
+      Width = 84
+      Height = 18
+      Caption = 'Nova Senha:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 72
+      Top = 209
+      Width = 121
+      Height = 18
+      Caption = 'Digite Novamente:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 72
+      Top = 84
+      Width = 82
+      Height = 18
+      Caption = 'Senha Atual:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object edtRepetirNovaSenha: TEdit
+      Left = 72
+      Top = 231
+      Width = 225
+      Height = 26
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      PasswordChar = '*'
+      TabOrder = 0
+    end
+    object edtSenhaAtual: TEdit
+      Left = 72
+      Top = 108
+      Width = 225
+      Height = 26
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      PasswordChar = '*'
+      TabOrder = 1
+    end
+    object edtSenhaNova: TEdit
+      Left = 72
+      Top = 179
+      Width = 225
+      Height = 26
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      PasswordChar = '*'
+      TabOrder = 2
+    end
+    object Panel1: TPanel
+      Left = 73
+      Top = 20
+      Width = 217
+      Height = 41
+      Anchors = []
+      BevelOuter = bvNone
+      TabOrder = 3
+      ExplicitLeft = 120
+      ExplicitTop = 19
+      object lblUsuarioLogado: TLabel
+        Left = 19
+        Top = 21
+        Width = 178
+        Height = 32
+        Alignment = taCenter
+        AutoSize = False
+        Caption = 'XXXXXXXXXXXX'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+      end
+      object Label4: TLabel
+        Left = 47
+        Top = 0
+        Width = 121
+        Height = 18
+        Caption = 'Usu'#225'rio Logado:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -15
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+    end
+    object pnlAlterar: TPanel
+      Left = 73
+      Top = 274
+      Width = 224
+      Height = 28
+      BevelOuter = bvNone
+      TabOrder = 4
+      object shpAlterar: TShape
+        Left = 0
+        Top = 0
+        Width = 224
+        Height = 28
+        Align = alClient
+        Brush.Color = 1560658
+        Shape = stRoundRect
+        ExplicitLeft = 144
+        ExplicitTop = 16
+        ExplicitWidth = 65
+        ExplicitHeight = 65
+      end
+      object lblAcessar: TLabel
+        Left = 0
+        Top = 0
+        Width = 224
+        Height = 28
+        Align = alClient
+        Alignment = taCenter
+        Caption = 'Alterar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = lblAcessarClick
+        OnMouseMove = lblAcessarMouseMove
+        OnMouseLeave = lblAcessarMouseLeave
+        ExplicitLeft = 39
+        ExplicitTop = -16
+        ExplicitWidth = 211
+      end
+    end
+    object pnlFechar: TPanel
+      Left = 73
+      Top = 309
+      Width = 224
+      Height = 27
+      BevelOuter = bvNone
+      TabOrder = 5
+      object shpFechar: TShape
+        Left = 0
+        Top = 0
+        Width = 224
+        Height = 27
+        Align = alClient
+        Brush.Color = 1516260
+        Shape = stRoundRect
+        ExplicitLeft = 40
+        ExplicitTop = 16
+        ExplicitWidth = 65
+        ExplicitHeight = 65
+      end
+      object lblFechar: TLabel
+        Left = 0
+        Top = 0
+        Width = 224
+        Height = 27
+        Align = alClient
+        Alignment = taCenter
+        Caption = 'Cancelar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = lblFecharClick
+        OnMouseMove = lblFecharMouseMove
+        OnMouseLeave = lblFecharMouseLeave
+        ExplicitTop = 1
+        ExplicitWidth = 211
+      end
+    end
+  end
+end

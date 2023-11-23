@@ -1,0 +1,97 @@
+unit uPDVImportarClientes;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Buttons,
+  Vcl.Imaging.pngimage,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.StdCtrls,
+  Vcl.WinXCtrls;
+
+type
+  TfrmPDVImportarClientes = class(TForm)
+    pnlContainer: TPanel;
+    pnlTop: TPanel;
+    pnlInfo: TPanel;
+    Panel1: TPanel;
+    Image1: TImage;
+    btnSair: TSpeedButton;
+    pnlTitulo: TPanel;
+    ImageCliente: TImage;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    DBGrid1: TDBGrid;
+    Button1: TButton;
+    Panel5: TPanel;
+    Shape1: TShape;
+    edtPesquisar: TSearchBox;
+    procedure btnSairClick(Sender: TObject);
+  private
+    FProc: TProc<TObject>;
+  public
+    class function New(AOWner: TComponent): TfrmPDVImportarClientes;
+    function Titulo(Value: String): TfrmPDVImportarClientes;
+    function Image(Value: String): TfrmPDVImportarClientes;
+    function Click(Value: TProc<TObject>): TfrmPDVImportarClientes;
+    function Embed(Value: TWinControl): TfrmPDVImportarClientes;
+  end;
+
+  var
+    frmPDVImportarClientes: TfrmPDVImportarClientes;
+
+implementation
+
+{$R *.dfm}
+
+{ TPageImportarCliente }
+
+procedure TfrmPDVImportarClientes.btnSairClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
+function TfrmPDVImportarClientes.Click(
+  Value: TProc<TObject>): TfrmPDVImportarClientes;
+begin
+  Result := Self;
+  FProc := Value;
+end;
+
+function TfrmPDVImportarClientes.Embed(Value: TWinControl): TfrmPDVImportarClientes;
+begin
+  Result := Self;
+  Self.Parent := Value;
+end;
+
+function TfrmPDVImportarClientes.Image(Value: String): TfrmPDVImportarClientes;
+begin
+  Result := Self;
+  ImageCliente.Picture.LoadFromFile(Value);
+end;
+
+class function TfrmPDVImportarClientes.New(
+  AOWner: TComponent): TfrmPDVImportarClientes;
+begin
+  Result := Self.Create(AOWner);
+end;
+
+function TfrmPDVImportarClientes.Titulo(Value: String): TfrmPDVImportarClientes;
+begin
+  Result := Self;
+  pnlTitulo.Caption := Value;
+end;
+
+end.

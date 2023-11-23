@@ -1,0 +1,46 @@
+unit cCadUsuario;
+
+interface
+
+uses System.Classes,
+     Vcl.Controls,
+     Vcl.ExtCtrls,
+     Vcl.Dialogs,
+     ZAbstractConnection,
+     ZConnection,
+     ZAbstractRODataset,
+     ZAbstractDataset,
+     ZDataset,
+     System.SysUtils,
+     uFuncaoCriptografia;
+
+type
+  TUsuario = class
+  private
+    ConexaoDB:TZConnection;
+    F_usuarioId:Integer;
+    F_nome:String;
+    F_senha: string;
+    function getSenha: String;
+    procedure setSenha(const Value: String);
+
+  public
+    constructor Create(aConexao:TZConnection);
+    destructor Destroy; override;
+    function Inserir:Boolean;
+    function Atualizar:Boolean;
+    function Apagar:Boolean;
+    function Selecionar(id:Integer):Boolean;
+    function Logar(aUsuario, aSenha: String): Boolean;
+    function UsuarioExiste(aUsuario: String): Boolean;
+    function AlterarSenha: Boolean;
+
+  published
+    property codigo        :Integer    read F_usuarioId      write F_usuarioId;
+    property nome          :string     read F_nome           write F_nome;
+    property senha         :string     read getSenha         write setSenha;
+  end;
+
+implementation
+
+end.

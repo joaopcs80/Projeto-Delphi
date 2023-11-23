@@ -1,0 +1,72 @@
+unit uPDVLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.Imaging.pngimage,
+  acpdv.view.compenente.transparencia;
+
+type
+  TfrmPDVLogin = class(TForm)
+    pnlContainer: TPanel;
+    pnlLogin: TPanel;
+    pnlImagem: TPanel;
+    pnlLogar: TPanel;
+    pnledtLogin: TPanel;
+    pnlUsuario: TPanel;
+    Label1: TLabel;
+    Shape1: TShape;
+    edtUsuario: TEdit;
+    pnlSenha: TPanel;
+    Label2: TLabel;
+    Shape2: TShape;
+    edtSenha: TEdit;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Shape3: TShape;
+    btnLogar: TSpeedButton;
+    Image1: TImage;
+    pnlLegenda: TPanel;
+    Label3: TLabel;
+    procedure btnLogarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    Ffundo: TFundoTransparente;
+  public
+
+  end;
+
+var
+  frmPDVLogin: TfrmPDVLogin;
+
+implementation
+
+
+{$R *.dfm}
+
+procedure TfrmPDVLogin.btnLogarClick(Sender: TObject);
+begin
+  if not ((edtUsuario.Text = 'Alessandro') and
+         (edtSenha.Text = '123')) then
+  begin
+    ShowMessage('Login e Senha Inválido');
+    Exit;
+  end;
+  Close;
+end;
+
+procedure TfrmPDVLogin.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Ffundo.Free;
+end;
+
+procedure TfrmPDVLogin.FormCreate(Sender: TObject);
+begin
+  Ffundo := TFundoTransparente.Create(nil);
+  Ffundo.Parent := pnlImagem;
+  Ffundo.Show;
+end;
+
+end.

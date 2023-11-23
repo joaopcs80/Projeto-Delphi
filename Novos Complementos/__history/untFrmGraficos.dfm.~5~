@@ -1,0 +1,400 @@
+object frmGraficos: TfrmGraficos
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'frmGraficos'
+  ClientHeight = 422
+  ClientWidth = 635
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlFundo: TPanel
+    Left = 0
+    Top = 0
+    Width = 635
+    Height = 422
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 104
+    ExplicitTop = 32
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object pnlTop: TPanel
+      Left = 1
+      Top = 1
+      Width = 633
+      Height = 41
+      Align = alTop
+      TabOrder = 0
+      ExplicitLeft = 248
+      ExplicitTop = 104
+      ExplicitWidth = 185
+      object lblTiTulo: TLabel
+        Left = 1
+        Top = 1
+        Width = 631
+        Height = 39
+        Align = alClient
+        Alignment = taCenter
+        Caption = 'lblTiTulo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 1560829
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Layout = tlCenter
+        ExplicitWidth = 50
+        ExplicitHeight = 16
+      end
+    end
+    object pnlbutton: TPanel
+      Left = 1
+      Top = 380
+      Width = 633
+      Height = 41
+      Align = alBottom
+      TabOrder = 1
+      ExplicitLeft = 176
+      ExplicitTop = 248
+      ExplicitWidth = 185
+      object btnSair: TPngSpeedButton
+        Left = 592
+        Top = 1
+        Width = 40
+        Height = 39
+        Align = alRight
+        Flat = True
+        Layout = blGlyphBottom
+        OnClick = btnSairClick
+        PngImage.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000000473424954080808087C0864880000000970485973000000B1000000
+          B101C62D498D0000001974455874536F667477617265007777772E696E6B7363
+          6170652E6F72679BEE3C1A000002C54944415478DAEDD75B4814511807F0EFCC
+          CE2DB6745B5DC95B4558420F110456D05A212D215D76BDAC1226F99004EE8348
+          114A540FDA0584480B8942B08CC20B69E0830F25E643142554D20D6AD558D2D2
+          40C39CDDD999D359A94DB7D971A41D97C00F3E983DFBDFEFFC86B3300CC21883
+          6A9594F060341E00848A4937405D5D1744B090220021046565D6994D01F248C7
+          FEFAC601F5F51DFA01CACBD341920E93AB22D26B14F23A004A4BE381E30A01E3
+          C0C6196AE167DFA1A26688EE51CB30B27FA2A5B7DEAD1DE072F902BFD312BE38
+          88E0E9E43C03013ADB7AEBEC0B0160ADE125C07F05A8ECFE9AF661D2E26EC907
+          292A80AAEEB1728C60BFC88A05B5BB12C7A205B844968649E79CB7C53F8F1620
+          50020274EC9C2DAE295A80DFBB5DF966B6545CDB02624400A9C5478062B93919
+          8AE326189369905C5A4827298CE9A30C727E4D56C26858C0B8652DBCDE6C83E4
+          E157B0EEDDE3B080B4E327031B6AF5CF2E0F39925C72244F14015F56A5C18B0C
+          3BACFED80FE9030FF50004CA8730B890D76AFD0B30B4A7104677DB81F7B861D3
+          D5CAE07A0B5E09D747E5E067FEF46590341FE0DC22FF1588E7D95B8A008FF520
+          786C4E58EE7E031B1BAB230E60284A8AE3D9D2E6DCA4464540B80A05C454D502
+          A6A8905B4318D18CE097312BCAB221748691314CC472D48E9B8ED48199F8BF00
+          948A66F9910703AD8905AD9FEE8D0BE29C678289675EFA96D1DBEFEF4BFC11F4
+          2E068022076EE6D91B77F3528E86E67507B006E437734C49736E4AB3525E5780
+          20C93B4D31F4B6A6ECE4F7E1F2BA018ADA3C593E9CDC471EC73EB5BC6E00AD33
+          9700C89B998961BED7333D01D8E1D8204952B53C3D9D8D05C1A8167EBB22A1F3
+          C4087F471580F1E7AEFEDB8FB40366DDBDDFE9DC0B82700A4F4D6DC5A2488786
+          29B3F902DDD151A975F882017F561125E6E494118C8B60D6832CA3C505CC2E87
+          C3E497E533E0F51E22AFE90D747BFBD948027E0267D9C6DE3A98201500000000
+          49454E44AE426082}
+        ExplicitLeft = 286
+        ExplicitTop = 6
+        ExplicitHeight = 37
+      end
+    end
+    object pnlCentro: TPanel
+      Left = 1
+      Top = 42
+      Width = 633
+      Height = 338
+      Align = alClient
+      TabOrder = 2
+      ExplicitLeft = 80
+      ExplicitTop = 144
+      ExplicitWidth = 185
+      ExplicitHeight = 41
+      object pgcGraficos: TPageControl
+        Left = 1
+        Top = 1
+        Width = 631
+        Height = 336
+        ActivePage = tabGrafico1
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 615
+        ExplicitHeight = 297
+        object tabGrafico1: TTabSheet
+          Caption = 'tabGrafico1'
+          ExplicitWidth = 607
+          ExplicitHeight = 269
+          object DBChart1: TDBChart
+            Left = 0
+            Top = 0
+            Width = 623
+            Height = 308
+            BackImage.Inside = True
+            Title.Color = clGreen
+            Title.Font.Color = clBlack
+            Title.Text.Strings = (
+              'Produto Em Estoque')
+            AxisVisible = False
+            Align = alClient
+            BevelOuter = bvNone
+            ParentColor = True
+            TabOrder = 0
+            ExplicitWidth = 491
+            ExplicitHeight = 265
+            DefaultCanvas = 'TGDIPlusCanvas'
+            PrintMargins = (
+              15
+              27
+              15
+              27)
+            ColorPaletteIndex = 13
+            object Series1: TBarSeries
+              Marks.Brush.Gradient.Colors = <
+                item
+                  Color = clRed
+                end
+                item
+                  Color = 819443
+                  Offset = 0.067915690866510540
+                end
+                item
+                  Color = clYellow
+                  Offset = 1.000000000000000000
+                end>
+              Marks.Brush.Gradient.Direction = gdTopBottom
+              Marks.Brush.Gradient.EndColor = clYellow
+              Marks.Brush.Gradient.MidColor = 819443
+              Marks.Brush.Gradient.StartColor = clRed
+              Marks.Brush.Gradient.Visible = True
+              Marks.Font.Color = 159
+              Marks.Font.Name = 'Tahoma'
+              Marks.Font.Style = [fsBold, fsItalic]
+              Marks.Frame.Color = 33023
+              Marks.RoundSize = 14
+              Marks.Visible = False
+              DataSource = dtmGrafico.QryProdutoEstoque
+              Title = 'ProdutoEstoque'
+              XLabelsSource = 'Label'
+              XValues.Name = 'X'
+              XValues.Order = loAscending
+              YValues.Name = 'Bar'
+              YValues.Order = loNone
+              YValues.ValueSource = 'Value'
+            end
+          end
+        end
+        object tabGrafico2: TTabSheet
+          Caption = 'tabGrafico2'
+          ImageIndex = 1
+          ExplicitWidth = 607
+          ExplicitHeight = 269
+          object DBChart2: TDBChart
+            Left = 0
+            Top = 0
+            Width = 623
+            Height = 308
+            Title.Font.Color = clBlack
+            Title.Text.Strings = (
+              'Valor de Venda Por Cliente na '#218'ltima Semana')
+            Legend.TextStyle = ltsLeftPercent
+            View3DOptions.Elevation = 315
+            View3DOptions.Orthogonal = False
+            View3DOptions.Perspective = 0
+            View3DOptions.Rotation = 360
+            Align = alClient
+            BevelOuter = bvNone
+            ParentColor = True
+            TabOrder = 0
+            ExplicitLeft = 491
+            ExplicitWidth = 492
+            ExplicitHeight = 265
+            DefaultCanvas = 'TGDIPlusCanvas'
+            ColorPaletteIndex = 13
+            object Series2: TPieSeries
+              Marks.Brush.Gradient.Colors = <
+                item
+                  Color = clRed
+                end
+                item
+                  Color = 819443
+                  Offset = 0.067915690866510540
+                end
+                item
+                  Color = clYellow
+                  Offset = 1.000000000000000000
+                end>
+              Marks.Brush.Gradient.Direction = gdTopBottom
+              Marks.Brush.Gradient.EndColor = clYellow
+              Marks.Brush.Gradient.MidColor = 819443
+              Marks.Brush.Gradient.StartColor = clRed
+              Marks.Brush.Gradient.Visible = True
+              Marks.Font.Color = 159
+              Marks.Font.Name = 'Tahoma'
+              Marks.Font.Style = [fsBold, fsItalic]
+              Marks.Frame.Color = 33023
+              Marks.RoundSize = 14
+              Marks.Visible = False
+              Marks.Style = smsPercent
+              Marks.Callout.Length = 20
+              DataSource = dtmGrafico.QryValorVendaPorCliente
+              Title = 'ValorDeVendaPorCliente'
+              XLabelsSource = 'Label'
+              XValues.Order = loAscending
+              YValues.Name = 'Pie'
+              YValues.Order = loNone
+              YValues.ValueSource = 'Value'
+              Frame.InnerBrush.BackColor = clRed
+              Frame.InnerBrush.Gradient.EndColor = clGray
+              Frame.InnerBrush.Gradient.MidColor = clWhite
+              Frame.InnerBrush.Gradient.StartColor = 4210752
+              Frame.InnerBrush.Gradient.Visible = True
+              Frame.MiddleBrush.BackColor = clYellow
+              Frame.MiddleBrush.Gradient.EndColor = 8553090
+              Frame.MiddleBrush.Gradient.MidColor = clWhite
+              Frame.MiddleBrush.Gradient.StartColor = clGray
+              Frame.MiddleBrush.Gradient.Visible = True
+              Frame.OuterBrush.BackColor = clGreen
+              Frame.OuterBrush.Gradient.EndColor = 4210752
+              Frame.OuterBrush.Gradient.MidColor = clWhite
+              Frame.OuterBrush.Gradient.StartColor = clSilver
+              Frame.OuterBrush.Gradient.Visible = True
+              Frame.Width = 4
+              OtherSlice.Legend.TextStyle = ltsPercent
+              OtherSlice.Legend.Visible = False
+            end
+          end
+        end
+        object tabGrafico3: TTabSheet
+          Caption = 'tabGrafico3'
+          ImageIndex = 2
+          ExplicitWidth = 607
+          ExplicitHeight = 269
+          object DBChart3: TDBChart
+            Left = 0
+            Top = 0
+            Width = 623
+            Height = 308
+            BackImage.Mode = pbmTile
+            BackImageMode = pbmTile
+            Title.Font.Color = clBlack
+            Title.Text.Strings = (
+              'Vendas Da '#218'ltima Semana')
+            AxisVisible = False
+            Align = alClient
+            BevelOuter = bvNone
+            ParentColor = True
+            TabOrder = 0
+            ExplicitTop = 265
+            ExplicitWidth = 491
+            ExplicitHeight = 266
+            DefaultCanvas = 'TGDIPlusCanvas'
+            ColorPaletteIndex = 13
+            object Series3: TLineSeries
+              DataSource = dtmGrafico.QryVendasDaSemana
+              Title = 'VendasDaSemana'
+              XLabelsSource = 'Label'
+              Brush.BackColor = clDefault
+              Pointer.InflateMargins = True
+              Pointer.Style = psRectangle
+              XValues.Name = 'X'
+              XValues.Order = loAscending
+              YValues.Name = 'Y'
+              YValues.Order = loNone
+              YValues.ValueSource = 'Value'
+            end
+          end
+        end
+        object tabGrafico4: TTabSheet
+          Caption = 'tabGrafico4'
+          ImageIndex = 3
+          ExplicitWidth = 607
+          ExplicitHeight = 269
+          object DBChart4: TDBChart
+            Left = 0
+            Top = 0
+            Width = 623
+            Height = 308
+            Title.Font.Color = clBlack
+            Title.Text.Strings = (
+              '10 Produtos Mais Vendidos')
+            Legend.TextStyle = ltsLeftPercent
+            View3DOptions.Elevation = 315
+            View3DOptions.Orthogonal = False
+            View3DOptions.Perspective = 0
+            View3DOptions.Rotation = 360
+            Align = alClient
+            BevelOuter = bvNone
+            ParentColor = True
+            TabOrder = 0
+            ExplicitLeft = 491
+            ExplicitTop = 265
+            ExplicitWidth = 492
+            ExplicitHeight = 266
+            DefaultCanvas = 'TGDIPlusCanvas'
+            ColorPaletteIndex = 13
+            object PieSeries2: TPieSeries
+              Marks.Brush.Gradient.Colors = <
+                item
+                  Color = clRed
+                end
+                item
+                  Color = 819443
+                  Offset = 0.067915690866510540
+                end
+                item
+                  Color = clYellow
+                  Offset = 1.000000000000000000
+                end>
+              Marks.Brush.Gradient.Direction = gdTopBottom
+              Marks.Brush.Gradient.EndColor = clYellow
+              Marks.Brush.Gradient.MidColor = 819443
+              Marks.Brush.Gradient.StartColor = clRed
+              Marks.Brush.Gradient.Visible = True
+              Marks.Font.Color = 159
+              Marks.Font.Name = 'Tahoma'
+              Marks.Font.Style = [fsBold, fsItalic]
+              Marks.Frame.Color = 33023
+              Marks.RoundSize = 14
+              Marks.Visible = False
+              Marks.Style = smsPercent
+              Marks.Callout.Length = 20
+              DataSource = dtmGrafico.Qry10ProdutosMaisVendidos
+              Title = '10ProdutosMaisVendidos'
+              XLabelsSource = 'Label'
+              XValues.Order = loAscending
+              YValues.Name = 'Pie'
+              YValues.Order = loNone
+              YValues.ValueSource = 'Value'
+              Frame.InnerBrush.BackColor = clRed
+              Frame.InnerBrush.Gradient.EndColor = clGray
+              Frame.InnerBrush.Gradient.MidColor = clWhite
+              Frame.InnerBrush.Gradient.StartColor = 4210752
+              Frame.InnerBrush.Gradient.Visible = True
+              Frame.MiddleBrush.BackColor = clYellow
+              Frame.MiddleBrush.Gradient.EndColor = 8553090
+              Frame.MiddleBrush.Gradient.MidColor = clWhite
+              Frame.MiddleBrush.Gradient.StartColor = clGray
+              Frame.MiddleBrush.Gradient.Visible = True
+              Frame.OuterBrush.BackColor = clGreen
+              Frame.OuterBrush.Gradient.EndColor = 4210752
+              Frame.OuterBrush.Gradient.MidColor = clWhite
+              Frame.OuterBrush.Gradient.StartColor = clSilver
+              Frame.OuterBrush.Gradient.Visible = True
+              Frame.Width = 4
+              OtherSlice.Legend.TextStyle = ltsPercent
+              OtherSlice.Legend.Visible = False
+            end
+          end
+        end
+      end
+    end
+  end
+end

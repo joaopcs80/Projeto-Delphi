@@ -1,0 +1,5 @@
+object SMLoading: TSMLoading
+  OldCreateOrder = False
+  Height = 352
+  Width = 519
+end

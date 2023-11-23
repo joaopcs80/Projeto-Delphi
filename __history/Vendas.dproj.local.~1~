@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/01/30 08:41:14.000.835,=C:\Users\devmv\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/01/30 11:54:12.000.303,=C:\Users\devmv\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/01/30 11:55:32.000.249,C:\Users\devmv\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Projeto Delphi\uPrincipal.pas</Transaction>
+    <Transaction>2023/01/30 11:55:32.000.249,C:\Users\devmv\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Projeto Delphi\uPrincipal.dfm</Transaction>
+    <Transaction>2023/01/30 11:55:49.000.244,C:\Users\devmv\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Projeto Delphi\Vendas.dproj</Transaction>
+    <Transaction>2023/01/30 13:35:06.000.316,=C:\Projeto Delphi\Unit1.pas</Transaction>
+    <Transaction>2023/01/30 13:36:26.000.606,C:\Projeto Delphi\Unit1.pas=C:\Projeto Delphi\datamodule\uDTMConexao.pas</Transaction>
+    <Transaction>2023/01/30 13:36:26.000.606,C:\Projeto Delphi\Unit1.dfm=C:\Projeto Delphi\datamodule\uDTMConexao.dfm</Transaction>
+    <Transaction>2023/01/30 14:23:01.000.652,=C:\Projeto Delphi\Unit1.pas</Transaction>
+    <Transaction>2023/01/30 14:23:47.000.035,C:\Projeto Delphi\Unit1.pas=C:\Projeto Delphi\heranca\uTelaHeranca.pas</Transaction>
+    <Transaction>2023/01/30 14:23:47.000.035,C:\Projeto Delphi\Unit1.dfm=C:\Projeto Delphi\heranca\uTelaHeranca.dfm</Transaction>
+    <Transaction>2023/01/30 15:12:27.000.109,=C:\Projeto Delphi\Unit1.pas</Transaction>
+    <Transaction>2023/01/30 15:14:23.000.428,C:\Projeto Delphi\Unit1.pas=C:\Projeto Delphi\cadastro\uCadCategorias.pas</Transaction>
+    <Transaction>2023/01/30 15:14:23.000.428,C:\Projeto Delphi\Unit1.dfm=C:\Projeto Delphi\cadastro\uCadCategorias.dfm</Transaction>
+    <Transaction>2023/01/30 15:31:27.000.118,=C:\Projeto Delphi\terceiros\Enter.pas</Transaction>
+    <Transaction>2023/01/31 09:03:20.618,=C:\Projeto Delphi\Unit1.pas</Transaction>
+    <Transaction>2023/01/31 09:03:39.649,C:\Projeto Delphi\heranca\uEnum.pas=C:\Projeto Delphi\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
